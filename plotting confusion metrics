@@ -1,0 +1,15 @@
+# Predicting the Test set results
+y_pred = model.predict(X_test_scaled)
+y_pred_classes = np.argmax(y_pred, axis=1)  # Convert predictions classes to one hot vectors
+y_true = np.argmax(y_test_encoded, axis=1)  # Convert validation observations to one hot vectors
+
+# Confusion matrix
+cm = confusion_matrix(y_true, y_pred_classes)
+
+# Plotting the confusion matrix
+plt.figure(figsize=(10, 7))
+sns.heatmap(cm, annot=True, fmt="d")
+plt.title('Confusion Matrix')
+plt.xlabel('Predicted')
+plt.ylabel('True')
+plt.show()
